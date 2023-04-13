@@ -1,3 +1,9 @@
+import 'dart:ffi';
+
+import 'package:ecommerceyt/appColors/appColors.dart';
+import 'package:ecommerceyt/stylies/loginScreenStylies.dart';
+import 'package:ecommerceyt/widgets/MyButtonWidgets.dart';
+import 'package:ecommerceyt/stylies/loginScreenStylies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -28,7 +34,32 @@ class _LoginScreenState extends State<LoginScreen> {
             obscureText: true,
           ),
         ],
-      )],
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: MyButtonWidgets(
+              text: "Login",
+              color: AppColors.baseBlackColor,
+              onPress: (){},
+              ) 
+            ),
+            const SizedBox(
+              width: 20,
+             ),
+             Expanded(child: MyButtonWidgets(
+              text: "Sign up",
+              color: AppColors.baseDarkPinkColor,
+              onPress: (){},
+              ) 
+            )
+          ],
+        ),
+      )
+      ]
     );
   } 
 
