@@ -30,9 +30,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       )],
     );
-  }
+  } 
 
-  // comment from windows
+  
+  // comment from windows and linux merged
+  // this is a second commit from linux , this will merge with master
 
 // this is for logo
   @override
