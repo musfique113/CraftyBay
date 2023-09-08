@@ -15,7 +15,7 @@ This is my first Flutter practice project, a simple e-commerce application built
 - Build a basic e-commerce app
 - Showcase progress and development skills
 dfsdfsdfewrtewtwet
-afsEFWrgsgysyssu
+afsEFWrgsgysyssukjhkhh
 dsfdsfpdskfdsfsdv
 sdfgdsgb
  xCvsdv
