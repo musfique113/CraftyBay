@@ -1,6 +1,6 @@
 
-import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screem.dart';
-import 'package:CraftyBay/presentation/ui/screens/home.dart';
+import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
+
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';

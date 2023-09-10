@@ -1,10 +1,13 @@
+import 'package:CraftyBay/data/models/network_response.dart';
+import 'package:CraftyBay/data/services/network_caller.dart';
+import 'package:CraftyBay/data/utils/urls.dart';
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/otp_verification_screen.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({super.key});
@@ -17,7 +20,41 @@ class EmailVerificationScreen extends StatefulWidget {
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //todo: remove the text from controller
-  final TextEditingController _emailTEController = TextEditingController(text: "test@gmail.com");
+  final TextEditingController _emailTEController = TextEditingController();
+  bool _emailVerficationInProgress = false;
+
+  Future<void> sendOTPTOEmail() async {
+    if (_formKey.currentState!.validate()) {
+      _emailVerficationInProgress = true;
+      if (mounted) {
+        setState(() {});
+      }
+      final NetworkResponse response = await NetworkCaller()
+          .getRequest(Urls.sendOtpToEmail(_emailTEController.text.trim()));
+      _emailVerficationInProgress = false;
+      if (mounted) {
+        setState(() {});
+      }
+      if (response.isSuccess) {
+        if (mounted) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => OTPlVerificationScreen(
+                email: _emailTEController.text.trim(),
+              ),
+            ),
+          );
+        }
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Email verification has failed!')),
+          );
+        }
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +108,17 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   ),
                   SizedBox(
                       width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            _submitForm();
-                          },
-                          child: const Text("Next")))
+                      child: Visibility(
+                        visible: _emailVerficationInProgress == false,
+                        replacement: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              sendOTPTOEmail();
+                            },
+                            child: const Text("Next")),
+                      ))
                 ],
               ),
             ),
@@ -85,12 +128,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     );
   }
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      final email = _emailTEController.text;
-      print('Email submitted: $email');
-      Get.to(const OTPlVerificationScreen());
-      //Get.offAll(const OTPlVerificationScreen());
-    }
-  }
+  // void _submitForm() {
+  //   if (_formKey.currentState!.validate()) {
+  //     final email = _emailTEController.text;
+  //     print('Email submitted: $email');
+  //     Get.to(OTPlVerificationScreen());
+  //     //Get.offAll(const OTPlVerificationScreen());
+  //   }
+  // }
 }

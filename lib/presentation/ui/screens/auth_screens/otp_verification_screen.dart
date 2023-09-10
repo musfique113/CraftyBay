@@ -9,7 +9,8 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPlVerificationScreen extends StatefulWidget {
-  const OTPlVerificationScreen({super.key});
+  final String email;
+  const OTPlVerificationScreen({super.key, required this.email});
 
   @override
   State<OTPlVerificationScreen> createState() => _OTPlVerificationScreenState();
