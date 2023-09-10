@@ -1,6 +1,6 @@
-# craftybay
+# craftybaytwo
 
-A new Flutter project.
+An ecommerce app
 
 ## Getting Started
 

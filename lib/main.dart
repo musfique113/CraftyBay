@@ -1,8 +1,7 @@
-
-import 'package:craftybay/home.dart';
+import 'package:CraftyBay/home.dart';
 import 'package:flutter/material.dart';
 void main(){
-  runApp(CraftyBay());
+  runApp(const CraftyBay());
 }
 
 class CraftyBay extends StatelessWidget {
@@ -20,7 +19,7 @@ class CraftyBay extends StatelessWidget {
         ),
         home: OrientationBuilder(
           builder: (context, orientation) {
-            return HomeScreen();
+            return const HomeScreen();
           },
         ));
   }
