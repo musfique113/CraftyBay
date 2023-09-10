@@ -8,7 +8,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
-  const CompleteProfileScreen({super.key});
+
+  final String email, otp;
+  const CompleteProfileScreen({super.key, required this.email, required this.otp});
 
   @override
   State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();
