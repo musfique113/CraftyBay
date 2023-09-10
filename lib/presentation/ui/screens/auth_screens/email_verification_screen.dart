@@ -20,7 +20,7 @@ class EmailVerificationScreen extends StatefulWidget {
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //todo: remove the text from controller
-  final TextEditingController _emailTEController = TextEditingController();
+  final TextEditingController _emailTEController = TextEditingController(text: "musfique113@gmail.com");
   bool _emailVerficationInProgress = false;
 
   Future<void> sendOTPTOEmail() async {

@@ -5,5 +5,5 @@ class ConstString{
   static const String enterOTP = 'Enter OTP Code';
   static const String otpSent = 'A 4 Digit OTP Code has been sent';
   static const String completeProfile = 'Complete Profile';
-  static const String getStarted = 'Get started with us fill-up you details';
+  static const String getStarted = 'Get started with us by fill-up you details';
 }

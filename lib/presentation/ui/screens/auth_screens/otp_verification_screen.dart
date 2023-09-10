@@ -1,3 +1,6 @@
+import 'package:CraftyBay/data/models/network_response.dart';
+import 'package:CraftyBay/data/services/network_caller.dart';
+import 'package:CraftyBay/data/utils/urls.dart';
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/complete_profile_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
@@ -5,7 +8,6 @@ import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPlVerificationScreen extends StatefulWidget {
@@ -19,6 +21,37 @@ class OTPlVerificationScreen extends StatefulWidget {
 class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _otpTEController = TextEditingController(text: "1234");
+
+  bool _otpVerificationInProgress = false;
+
+  Future<void> verifyOTP() async {
+    _otpVerificationInProgress = true;
+    if (mounted) {
+      setState(() {});
+    }
+    final NetworkResponse response = await NetworkCaller()
+        .getRequest(Urls.otpVerify(widget.email, _otpTEController.text));
+    _otpVerificationInProgress = false;
+    if (mounted) {
+      setState(() {});
+    }
+    if (response.isSuccess) {
+      if (mounted) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CompleteProfileScreen(
+                  email: widget.email,
+                  otp: _otpTEController.text,
+                )));
+      }
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Otp verification has been failed!')));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,14 +130,18 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
                   height: 16,
                 ),
                 SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _submitForm();
-                    },
-                    child: const Text('Next'),
-                  ),
-                ),
+                    width: double.infinity,
+                    child: Visibility(
+                      visible: _otpVerificationInProgress == false,
+                      replacement: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            verifyOTP();
+                          },
+                          child: const Text("Next")),
+                    )),
                 const SizedBox(
                   height: 24,
                 ),
@@ -136,12 +173,12 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
     );
   }
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      final otp = _otpTEController.text;
-      print('OTP submitted: $otp');
-      //Get.offAll(const CompleteProfileScreen());
-      Get.to(const CompleteProfileScreen());
-    }
-  }
+  // void _submitForm() {
+  //   if (_formKey.currentState!.validate()) {
+  //     final otp = _otpTEController.text;
+  //     print('OTP submitted: $otp');
+  //     //Get.offAll(const CompleteProfileScreen());
+  //     Get.to(const CompleteProfileScreen());
+  //   }
+  // }
 }
