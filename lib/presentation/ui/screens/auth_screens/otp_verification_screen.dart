@@ -21,7 +21,8 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _otpTEController = TextEditingController(text: "1234");
 
-  int _countdown = 120; // Initial countdown time in seconds
+  //TODO: set the countdown to 120
+  int _countdown = 20; // Initial countdown time in seconds
   late Timer _timer;
 
   @override
@@ -175,7 +176,8 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
       void _resendCode() {
         // Implement code to resend the authentication code here
         // You can also start the countdown timer again here
-        _countdown = 120; // Reset the countdown to 120 seconds
+        //TODO: set the countdown to 120
+        _countdown = 20; // Reset the countdown to 120 seconds
         _startCountdown();
       }
 
