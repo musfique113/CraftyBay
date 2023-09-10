@@ -64,7 +64,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   ),
                   const Text(
                     ConstString.getStarted,
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
                   ),
                   const SizedBox(
                     height: 19,

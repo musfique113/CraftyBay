@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/complete_profile_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
@@ -19,7 +21,39 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _otpTEController = TextEditingController(text: "1234");
 
+  int _countdown = 120; // Initial countdown time in seconds
+  late Timer _timer;
+
   @override
+  void initState() {
+    super.initState();
+
+    // Start the countdown timer when the screen is first loaded
+    _startCountdown();
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the timer when the screen is disposed to prevent memory leaks
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void _startCountdown() {
+    // Create a timer that fires every 1 second
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_countdown > 0) {
+          _countdown--; // Decrease the countdown by 1 second
+        } else {
+          // Disable the button and stop the timer when the countdown reaches 0
+          timer.cancel();
+        }
+      });
+    });
+  }
+
+      @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -108,13 +142,13 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
                   height: 24,
                 ),
                 RichText(
-                  text: const TextSpan(
-                    style: TextStyle(color: Colors.grey),
+                  text: TextSpan(
+                    style: const TextStyle(color: Colors.grey),
                     children: [
-                      TextSpan(text: 'This code will expire in '),
+                      const TextSpan(text: 'This code will expire in '),
                       TextSpan(
-                        text: '120s',
-                        style: TextStyle(
+                        text: '$_countdown s',
+                        style: const TextStyle(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.bold,
                         ),
@@ -123,9 +157,12 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: _countdown > 0 ? null : _resendCode,
                   style: TextButton.styleFrom(foregroundColor: Colors.grey),
-                  child: const Text('Resend Code',style: TextStyle(fontSize: 16),),
+                  child: Text(
+                    _countdown > 0 ? ' ' : 'Resend Code',
+                    style: const TextStyle(fontSize: 16),
+                  ),
                 ),
               ],
             ),
@@ -134,6 +171,13 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
       ),
     );
   }
+
+      void _resendCode() {
+        // Implement code to resend the authentication code here
+        // You can also start the countdown timer again here
+        _countdown = 120; // Reset the countdown to 120 seconds
+        _startCountdown();
+      }
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
