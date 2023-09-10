@@ -1,8 +1,10 @@
+import 'package:CraftyBay/presentation/ui/screens/auth_screens/otp_verification_screen.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({super.key});
@@ -14,7 +16,9 @@ class EmailVerificationScreen extends StatefulWidget {
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailTEController = TextEditingController();
+  //todo: remove the text from controller
+  final TextEditingController _emailTEController = TextEditingController(text: "test@gmail.com");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,12 +52,15 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   const SizedBox(
                     height: 2,
                   ),
-                  const Text(ConstString.enterYourEmail),
+                  const Text(
+                    ConstString.enterYourEmail,
+                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                  ),
                   const SizedBox(
                     height: 16,
                   ),
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Enter your email",
                     ),
                     validator: FormValidator.validateEmail,
@@ -64,10 +71,11 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   ),
                   SizedBox(
                       width: double.infinity,
-                      child:
-                          ElevatedButton(onPressed: () {
+                      child: ElevatedButton(
+                          onPressed: () {
                             _submitForm();
-                          }, child: const Text("Next")))
+                          },
+                          child: const Text("Next")))
                 ],
               ),
             ),
@@ -81,7 +89,8 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     if (_formKey.currentState!.validate()) {
       final email = _emailTEController.text;
       print('Email submitted: $email');
+      Get.to(const OTPlVerificationScreen());
+      //Get.offAll(const OTPlVerificationScreen());
     }
   }
 }
-

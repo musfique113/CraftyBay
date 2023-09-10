@@ -1,6 +1,25 @@
 class FormValidator {
+  //OTP Validation
+  static String? validateOTP(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'OTP is required';
+    }
+
+    if (value.length != 4) {
+      return 'OTP must be 4 characters long';
+    }
+
+    if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+      return 'OTP should contain only digits';
+    }
+
+    // You can add more validation rules as needed.
+
+    return null;
+  }
+
   //email validator
-  static String? validateEmail (String? value) {
+  static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your email address';
     }
@@ -30,7 +49,6 @@ class FormValidator {
     return null;
   }
 
-
 // Helper function to validate the domain.
   bool isValidDomain(String domain) {
     // Implement the domain validation logic here.
@@ -54,7 +72,6 @@ class FormValidator {
     // For simplicity, we'll assume no common email providers are used in this example.
     return false;
   }
-
 
   //name validator
   static String? validateName(String? value) {
@@ -105,7 +122,8 @@ class FormValidator {
     }
 
     // Uppercase and lowercase letters validation
-    if (!value.contains(RegExp(r'[a-z]')) || !value.contains(RegExp(r'[A-Z]'))) {
+    if (!value.contains(RegExp(r'[a-z]')) ||
+        !value.contains(RegExp(r'[A-Z]'))) {
       return 'Password must contain both uppercase and lowercase letters';
     }
 
@@ -136,7 +154,4 @@ class FormValidator {
     // You can add more specific password validation here if needed.
     return null;
   }
-
-
-
 }
