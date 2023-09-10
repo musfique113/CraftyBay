@@ -1,9 +1,11 @@
 
+import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screem.dart';
 import 'package:CraftyBay/presentation/ui/screens/home.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
-import 'package:CraftyBay/presentation/utilities/resorces_path.dart';
+import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,10 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void goToNextScreen() {
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
-              (route) => false);
+      Get.offAll(const EmailVerificationScreen());
     });
   }
 
