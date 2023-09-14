@@ -1,5 +1,5 @@
 import 'package:CraftyBay/presentation/ui/screens/bottom_nav_bar_screen.dart';
-import 'package:CraftyBay/presentation/ui/screens/home.dart';
+import 'package:CraftyBay/presentation/ui/screens/home_screen.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';

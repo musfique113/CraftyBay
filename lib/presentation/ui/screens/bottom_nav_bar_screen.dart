@@ -1,6 +1,6 @@
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/categories_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/cart_screen.dart';
-import 'package:CraftyBay/presentation/ui/screens/home.dart';
+import 'package:CraftyBay/presentation/ui/screens/home_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/wish_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:flutter/material.dart';
