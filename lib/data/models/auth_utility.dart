@@ -1,10 +1,11 @@
 import 'dart:convert';
+
 import 'package:CraftyBay/data/models/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class AuthUtility {
   AuthUtility._();
+
   static LoginModel userInfo = LoginModel();
 
   static Future<void> saveUserInfo(LoginModel model) async {
@@ -32,6 +33,4 @@ class AuthUtility {
     }
     return isLogin;
   }
-
-
 }

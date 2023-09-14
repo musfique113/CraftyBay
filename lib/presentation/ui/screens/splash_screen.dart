@@ -1,13 +1,9 @@
-
 import 'package:CraftyBay/data/models/auth_utility.dart';
-import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/bottom_nav_bar_screen.dart';
-
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,9 +12,7 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -37,13 +31,12 @@ class _SplashScreenState extends State<SplashScreen> {
                   ? const BottomNavbarScreen()
                   // : const EmailVerificationScreen()),
                   : const BottomNavbarScreen()),
-              (route) => false,
+          (route) => false,
         );
       }
       //Get.offAll(const EmailVerificationScreen());
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +51,13 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           const Spacer(),
           const CircularProgressIndicator(),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           const Text(ConstString.appVersion),
-          const SizedBox(height: 20,),
-
+          const SizedBox(
+            height: 20,
+          ),
         ],
       ),
     );

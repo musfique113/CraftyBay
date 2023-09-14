@@ -8,7 +8,6 @@ import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({super.key});
 
@@ -19,8 +18,10 @@ class EmailVerificationScreen extends StatefulWidget {
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   //todo: remove the text from controller
-  final TextEditingController _emailTEController = TextEditingController(text: "musfique113@gmail.com");
+  final TextEditingController _emailTEController =
+      TextEditingController(text: "musfique113@gmail.com");
   bool _emailVerficationInProgress = false;
 
   Future<void> sendOTPTOEmail() async {
@@ -128,12 +129,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     );
   }
 
-  // void _submitForm() {
-  //   if (_formKey.currentState!.validate()) {
-  //     final email = _emailTEController.text;
-  //     print('Email submitted: $email');
-  //     Get.to(OTPlVerificationScreen());
-  //     //Get.offAll(const OTPlVerificationScreen());
-  //   }
-  // }
+// void _submitForm() {
+//   if (_formKey.currentState!.validate()) {
+//     final email = _emailTEController.text;
+//     print('Email submitted: $email');
+//     Get.to(OTPlVerificationScreen());
+//     //Get.offAll(const OTPlVerificationScreen());
+//   }
+// }
 }

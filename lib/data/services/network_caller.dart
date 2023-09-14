@@ -1,14 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:CraftyBay/app.dart';
 import 'package:CraftyBay/data/models/auth_utility.dart';
 import 'package:CraftyBay/data/models/network_response.dart';
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-
-
-
 
 class NetworkCaller {
   Future<NetworkResponse> getRequest(String url) async {
@@ -62,14 +60,12 @@ class NetworkCaller {
   //   return NetworkResponse(false, -1, null);
   // }
 
-
-
-
   Future<void> gotoLogin() async {
     await AuthUtility.clearUserInfo();
     Navigator.pushAndRemoveUntil(
         CraftyBay.globalKey.currentContext!,
-        MaterialPageRoute(builder: (context) => const EmailVerificationScreen()),
+        MaterialPageRoute(
+            builder: (context) => const EmailVerificationScreen()),
         (route) => false);
   }
 }

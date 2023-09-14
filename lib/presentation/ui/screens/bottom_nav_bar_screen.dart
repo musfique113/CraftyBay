@@ -30,9 +30,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedScreenIndex,
         unselectedItemColor: Colors.grey,
-        unselectedLabelStyle: const TextStyle(
-            color: Colors.grey
-        ),
+        unselectedLabelStyle: const TextStyle(color: Colors.grey),
         showUnselectedLabels: true,
         selectedItemColor: AppColors.primaryColor,
         onTap: (int index) {
@@ -43,10 +41,14 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
           }
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.widgets_sharp), label: 'Categories'),
-          BottomNavigationBarItem(icon: Icon(Icons.add_shopping_cart), label: 'Cart'),
-          BottomNavigationBarItem(icon: Icon(Icons.card_giftcard_outlined), label: 'Wish'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.widgets_sharp), label: 'Categories'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_shopping_cart), label: 'Cart'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.card_giftcard_outlined), label: 'Wish'),
         ],
       ),
     );

@@ -11,10 +11,15 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: const Text("Cart"),),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Cart"),
+      ),
       body: const Center(
-        child: Text("Cart screen",style: TextStyle(fontSize: 54,color: AppColors.primaryColor),),
+        child: Text(
+          "Cart screen",
+          style: TextStyle(fontSize: 54, color: AppColors.primaryColor),
+        ),
       ),
     );
   }

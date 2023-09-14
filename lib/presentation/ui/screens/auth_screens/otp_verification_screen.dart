@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 
 import 'package:CraftyBay/data/models/network_response.dart';
@@ -16,6 +14,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPlVerificationScreen extends StatefulWidget {
   final String email;
+
   const OTPlVerificationScreen({super.key, required this.email});
 
   @override
@@ -24,8 +23,8 @@ class OTPlVerificationScreen extends StatefulWidget {
 
 class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _otpTEController = TextEditingController(text: "1234");
-
+  final TextEditingController _otpTEController =
+      TextEditingController(text: "1234");
 
   //TODO: set the countdown to 120
   int _countdown = 20; // Initial countdown time in seconds
@@ -49,9 +48,9 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
             context,
             MaterialPageRoute(
                 builder: (context) => CompleteProfileScreen(
-                  email: widget.email,
-                  otp: _otpTEController.text,
-                )));
+                      email: widget.email,
+                      otp: _otpTEController.text,
+                    )));
       }
     } else {
       if (mounted) {
@@ -60,7 +59,6 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
       }
     }
   }
-
 
   @override
   void initState() {
@@ -91,7 +89,7 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
     });
   }
 
-      @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -214,31 +212,29 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
     );
   }
 
+  void _resendCode() {
+    // Implement code to resend the authentication code here
+    // You can also start the countdown timer again here
+    //TODO: set the countdown to 120
+    _countdown = 20; // Reset the countdown to 120 seconds
+    _startCountdown();
+  }
 
-      void _resendCode() {
-        // Implement code to resend the authentication code here
-        // You can also start the countdown timer again here
-        //TODO: set the countdown to 120
-        _countdown = 20; // Reset the countdown to 120 seconds
-        _startCountdown();
-      }
+// void _submitForm() {
+//   if (_formKey.currentState!.validate()) {
+//     final otp = _otpTEController.text;
+//     print('OTP submitted: $otp');
+//     //Get.offAll(const CompleteProfileScreen());
+//     Get.to(const CompleteProfileScreen());
+//   }
+// }
 
-  // void _submitForm() {
-  //   if (_formKey.currentState!.validate()) {
-  //     final otp = _otpTEController.text;
-  //     print('OTP submitted: $otp');
-  //     //Get.offAll(const CompleteProfileScreen());
-  //     Get.to(const CompleteProfileScreen());
-  //   }
-  // }
-
-  // void _submitForm() {
-  //   if (_formKey.currentState!.validate()) {
-  //     final otp = _otpTEController.text;
-  //     print('OTP submitted: $otp');
-  //     //Get.offAll(const CompleteProfileScreen());
-  //     Get.to(const CompleteProfileScreen());
-  //   }
-  // }
-
+// void _submitForm() {
+//   if (_formKey.currentState!.validate()) {
+//     final otp = _otpTEController.text;
+//     print('OTP submitted: $otp');
+//     //Get.offAll(const CompleteProfileScreen());
+//     Get.to(const CompleteProfileScreen());
+//   }
+// }
 }

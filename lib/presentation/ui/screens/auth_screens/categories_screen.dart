@@ -11,10 +11,15 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: const Text("Categories Screen"),),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Categories Screen"),
+      ),
       body: const Center(
-        child: Text("Categories Screen",style: TextStyle(fontSize: 54,color: AppColors.primaryColor),),
+        child: Text(
+          "Categories Screen",
+          style: TextStyle(fontSize: 54, color: AppColors.primaryColor),
+        ),
       ),
     );
   }

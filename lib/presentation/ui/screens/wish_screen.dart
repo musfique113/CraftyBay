@@ -11,10 +11,15 @@ class WishScreen extends StatefulWidget {
 class _WishScreenState extends State<WishScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: const Text("WishScreen"),),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("WishScreen"),
+      ),
       body: const Center(
-        child: Text("WishScreen",style: TextStyle(fontSize: 54,color: AppColors.primaryColor),),
+        child: Text(
+          "WishScreen",
+          style: TextStyle(fontSize: 54, color: AppColors.primaryColor),
+        ),
       ),
     );
   }

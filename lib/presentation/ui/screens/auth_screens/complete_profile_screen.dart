@@ -1,5 +1,4 @@
 import 'package:CraftyBay/presentation/ui/screens/bottom_nav_bar_screen.dart';
-import 'package:CraftyBay/presentation/ui/screens/home_screen.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
@@ -8,9 +7,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
-
   final String email, otp;
-  const CompleteProfileScreen({super.key, required this.email, required this.otp});
+
+  const CompleteProfileScreen(
+      {super.key, required this.email, required this.otp});
 
   @override
   State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();

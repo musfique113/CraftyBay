@@ -2,8 +2,6 @@ import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppLightTheme {
-
-
   static final ThemeData lightTheme = ThemeData(
     fontFamily: "Poppins",
     brightness: Brightness.light,
@@ -46,9 +44,7 @@ class AppLightTheme {
             fontFamily: 'Poppins',
             letterSpacing: 0.6))),
   );
-
 }
-
 
 // static final ThemeData lightTheme = ThemeData(
 //   brightness: Brightness.light,
