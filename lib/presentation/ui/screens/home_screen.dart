@@ -4,9 +4,14 @@ import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +55,14 @@ class HomeScreen extends StatelessWidget {
                     fillColor: Colors.grey.shade200,
                     filled: true,
                     hintText: "Search",
-                    prefixIcon:const Icon(Icons.search) ,
+                    prefixIcon: const Icon(Icons.search),
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                     ),
                     focusedBorder:
                         const OutlineInputBorder(borderSide: BorderSide.none)),
-                style: const TextStyle(fontSize: 20, color: AppColors.primaryColor),
+                style: const TextStyle(
+                    fontSize: 20, color: AppColors.primaryColor),
               ),
             ],
           ),
