@@ -1,7 +1,8 @@
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
-import 'package:CraftyBay/presentation/utilities/custom_widgets/carousel_slider_home_screen.dart';
+import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widgets/carousel_slider_home_screen.dart';
+import 'package:CraftyBay/presentation/utilities/custom_widgets/categories_cards.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/circular_icon_button.dart';
-import 'package:CraftyBay/presentation/utilities/custom_widgets/section_title_home_screen.dart';
+import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widgets/section_title_home_screen.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -68,34 +69,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const CustomCarouselSlider(),
               SectionTitle(title: "Categories", onTap: () {}),
-              SizedBox(
-                height: 110,
-                child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 9),
-                          padding: const EdgeInsets.all(17.5),
-                          decoration: BoxDecoration(
-                              color: AppColors.primaryColor.withOpacity(0.1),borderRadius: BorderRadius.circular(10)),
-                          child: const Icon(
-                            Icons.account_box,
-                            size: 40,
-                            color: AppColors.primaryColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        const Text("Elc",style: TextStyle(fontSize: 15),)
-                      ],
-                    );
-                  },
-                ),
-              ),
+          SizedBox(
+            height: 110,
+            child: ListView.builder(
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return const CategoriesCards();
+              },
+            ),
+          ),
               SectionTitle(title: "Popular", onTap: () {}),
             ],
           ),
@@ -104,3 +87,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
