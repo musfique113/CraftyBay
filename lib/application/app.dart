@@ -1,3 +1,5 @@
+import 'package:CraftyBay/application/state_holder_binder.dart';
+import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
 import 'package:CraftyBay/presentation/ui/screens/splash_screen.dart';
 import 'package:CraftyBay/presentation/utilities/theme_data/light_theme.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,8 @@ class CraftyBay extends StatelessWidget {
         key: CraftyBay.globalKey,
         debugShowCheckedModeBanner: false,
         theme: AppLightTheme.lightTheme,
+        initialBinding: StateHolderBinder(),
         home: const SplashScreen());
   }
 }
+

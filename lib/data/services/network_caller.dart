@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:CraftyBay/app.dart';
+import 'package:CraftyBay/application/app.dart';
 import 'package:CraftyBay/data/models/auth_utility.dart';
 import 'package:CraftyBay/data/models/network_response.dart';
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';

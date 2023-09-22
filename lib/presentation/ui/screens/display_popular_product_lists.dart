@@ -37,7 +37,7 @@ class _DisplayPopularProductListScreenState extends State<DisplayPopularProductL
                   mainAxisSpacing: 5
               ),
               itemBuilder: (context, index) {
-                return FittedBox(child: const ProductsCard());
+                return const FittedBox(child: ProductsCard());
               }),
         ));
   }

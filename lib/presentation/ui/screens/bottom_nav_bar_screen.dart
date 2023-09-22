@@ -1,5 +1,5 @@
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
-import 'package:CraftyBay/presentation/ui/screens/categories_screen.dart';
+import 'package:CraftyBay/presentation/ui/screens/categories_list_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/cart_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/home_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/wish_screen.dart';
@@ -15,7 +15,7 @@ class BottomNavbarScreen extends StatefulWidget {
 }
 
 class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
-  MainBottomNavController mainBottomNavController = Get.put(MainBottomNavController());
+
   final List<Widget> _screens = [
     const HomeScreen(),
     const CategoriesScreen(),
@@ -25,19 +25,18 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(mainBottomNavController.currentSelectedIndex);
     return GetBuilder<MainBottomNavController>(
       builder: (context) {
         return Scaffold(
-          body: _screens[mainBottomNavController.currentSelectedIndex],
+          body: _screens[context.currentSelectedIndex],
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            currentIndex: mainBottomNavController.currentSelectedIndex,
+            currentIndex: context.currentSelectedIndex,
             unselectedItemColor: Colors.grey,
             unselectedLabelStyle: const TextStyle(color: Colors.grey),
             showUnselectedLabels: true,
             selectedItemColor: AppColors.primaryColor,
-            onTap: mainBottomNavController.changeScreen,
+            onTap: context.changeScreen,
             items: const [
               BottomNavigationBarItem(
                   icon: Icon(Icons.home_outlined), label: 'Home'),
