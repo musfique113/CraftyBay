@@ -12,7 +12,7 @@ class CategoriesCards extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 9),
-          padding: const EdgeInsets.all(17.5),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: AppColors.primaryColor.withOpacity(0.1),
               borderRadius: BorderRadius.circular(10)),
@@ -27,7 +27,7 @@ class CategoriesCards extends StatelessWidget {
         ),
         const Text(
           "Electronics",
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
         )
       ],
     );

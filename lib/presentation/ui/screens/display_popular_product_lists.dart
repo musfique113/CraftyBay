@@ -3,14 +3,14 @@ import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widg
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class WishScreen extends StatefulWidget {
-  const WishScreen({super.key});
+class DisplayPopularProductListScreen extends StatefulWidget {
+  const DisplayPopularProductListScreen({super.key});
 
   @override
-  State<WishScreen> createState() => _WishScreenState();
+  State<DisplayPopularProductListScreen> createState() => _DisplayPopularProductListScreenState();
 }
 
-class _WishScreenState extends State<WishScreen> {
+class _DisplayPopularProductListScreenState extends State<DisplayPopularProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,23 +18,23 @@ class _WishScreenState extends State<WishScreen> {
           backgroundColor: Colors.white,
           elevation: 0,
           title: const Text(
-            "Wish List",
+            "Popular Items",
             style: TextStyle(color: Colors.black, fontSize: 20),
           ),
-          // leading: BackButton(
-          //   color: Colors.black,
-          //   onPressed: () {
-          //     Get.back();
-          //   },
-          // ),
+          leading: BackButton(
+            color: Colors.black,
+            onPressed: () {
+              Get.back();
+            },
+          ),
 
         ),
         body: Padding(
           padding: const EdgeInsets.all(1.0),
           child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: 5
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 5
               ),
               itemBuilder: (context, index) {
                 return FittedBox(child: const ProductsCard());

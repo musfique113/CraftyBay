@@ -1,3 +1,5 @@
+import 'package:CraftyBay/presentation/ui/screens/categories_screen.dart';
+import 'package:CraftyBay/presentation/ui/screens/display_popular_product_lists.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/categories_cards.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/circular_icon_button_app_bar.dart';
@@ -7,6 +9,7 @@ import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widg
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -69,7 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 20, color: AppColors.primaryColor),
               ),
               const CustomCarouselSlider(),
-              SectionTitle(title: "Categories", onTap: () {}),
+              SectionTitle(title: "Categories", onTap: () {
+                Get.to(const CategoriesScreen());
+              }),
               SizedBox(
                 height: 110,
                 child: ListView.builder(
@@ -80,7 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              SectionTitle(title: "Popular", onTap: () {}),
+              SectionTitle(title: "Popular", onTap: () {
+                Get.to(const DisplayPopularProductListScreen());
+              }),
               SizedBox(
                 height: 165,
                 child: ListView.builder(
@@ -90,7 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   return const ProductsCard();
                 }),
               ),
-              SectionTitle(title: "Special", onTap: () {}),
+              SectionTitle(title: "Special", onTap: () {
+                Get.to(const DisplayPopularProductListScreen());
+              }),
               SizedBox(
                 height: 165,
                 child: ListView.builder(
@@ -100,7 +109,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       return const ProductsCard();
                     }),
               ),
-              SectionTitle(title: "New", onTap: () {}),
+              SectionTitle(title: "New", onTap: () {
+                Get.to(const DisplayPopularProductListScreen());
+              }),
               SizedBox(
                 height: 165,
                 child: ListView.builder(

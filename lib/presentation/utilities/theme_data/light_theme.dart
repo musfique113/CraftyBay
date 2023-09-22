@@ -29,19 +29,5 @@ class AppLightTheme {
       disabledBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
     ),
-    textTheme: const TextTheme(
-        titleSmall: TextStyle(
-          fontSize: 24,
-          fontFamily: 'Poppins',
-          color: Colors.black,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 0.6,
-        ),
-        titleLarge: (TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-            fontSize: 36,
-            fontFamily: 'Poppins',
-            letterSpacing: 0.6))),
   );
 }

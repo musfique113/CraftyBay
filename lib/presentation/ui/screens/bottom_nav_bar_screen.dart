@@ -1,4 +1,4 @@
-import 'package:CraftyBay/presentation/ui/screens/auth_screens/categories_screen.dart';
+import 'package:CraftyBay/presentation/ui/screens/categories_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/cart_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/home_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/wish_screen.dart';
