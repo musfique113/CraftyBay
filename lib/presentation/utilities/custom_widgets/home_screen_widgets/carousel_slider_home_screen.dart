@@ -33,7 +33,9 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                 return Container(
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(color: Colors.amber,borderRadius: BorderRadius.circular(10.0)),
+                    decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(10.0)),
                     alignment: Alignment.center,
                     child: Text(
                       'Image $i',

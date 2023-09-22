@@ -1,7 +1,7 @@
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
-import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widgets/carousel_slider_home_screen.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/categories_cards.dart';
-import 'package:CraftyBay/presentation/utilities/custom_widgets/circular_icon_button.dart';
+import 'package:CraftyBay/presentation/utilities/custom_widgets/circular_icon_button_app_bar.dart';
+import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widgets/carousel_slider_home_screen.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widgets/section_title_home_screen.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
@@ -69,17 +69,92 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const CustomCarouselSlider(),
               SectionTitle(title: "Categories", onTap: () {}),
-          SizedBox(
-            height: 110,
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return const CategoriesCards();
-              },
-            ),
-          ),
+              SizedBox(
+                height: 110,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return const CategoriesCards();
+                  },
+                ),
+              ),
               SectionTitle(title: "Popular", onTap: () {}),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                child: SizedBox(
+                  width: 150,
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(7),
+                                topRight: Radius.circular(7)),
+                            color: AppColors.primaryColor.withOpacity(0.1),
+                            image: const DecorationImage(
+                                image: AssetImage(ImageAssets.nikeShoePNG))),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(10, 2, 8, 0),
+                        child: Text(
+                          "Nike Shoe dsfdsGF ASDGFEW SDFWEgsasdS",
+                          maxLines: 1,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                              overflow: TextOverflow.ellipsis),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(10, 0, 8, 2),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "\$1000",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.primaryColor,
+                                  overflow: TextOverflow.ellipsis),
+                            ),
+                            Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
+                              Icon(
+                                Icons.star,
+                                size: 21,
+                                color: Colors.amber,
+                              ),
+                              Text(
+                                "4.5",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black,
+                                    overflow: TextOverflow.ellipsis),
+                              )
+                            ]),
+                            Card(
+                                color: AppColors.primaryColor,
+                                child: Padding(
+                                  padding: EdgeInsets.all(1.0),
+                                  child: Icon(
+                                    Icons.favorite_border,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
@@ -87,4 +162,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

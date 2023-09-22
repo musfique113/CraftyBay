@@ -14,7 +14,7 @@ class BottomNavbarScreen extends StatefulWidget {
 
 class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
   int _selectedScreenIndex = 0;
-  final List<Widget> _screens =  [
+  final List<Widget> _screens = [
     const HomeScreen(),
     const CategoriesScreen(),
     const CartScreen(),
