@@ -23,7 +23,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             backgroundColor: Colors.white,
             elevation: 0,
             title: const Text(
-              "Categories",
+              "All Categories",
               style: TextStyle(color: Colors.black, fontSize: 20),
             ),
             leading: IconButton(

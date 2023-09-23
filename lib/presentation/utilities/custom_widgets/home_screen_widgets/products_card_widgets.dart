@@ -1,6 +1,8 @@
+import 'package:CraftyBay/presentation/ui/screens/product_details_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductsCard extends StatelessWidget {
   const ProductsCard({
@@ -11,7 +13,7 @@ class ProductsCard extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(8),
       onTap: () {
-        //Get.to(const ProductDetailsScreen());
+        Get.to(const ProductDetailsScreen());
       },
       child: Card(
         shadowColor: AppColors.primaryColor.withOpacity(0.1),
