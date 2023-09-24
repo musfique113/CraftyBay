@@ -6,4 +6,6 @@ class ConstString {
   static const String otpSent = 'A 4 Digit OTP Code has been sent';
   static const String completeProfile = 'Complete Profile';
   static const String getStarted = 'Get started with us by fill-up you details';
+  static const String dummyText = "In torquent fermentum egestas. Habitasse ligula dictumst. Congue congue parturient senectus.Lectus praesent maecenas venenatis vestibulum fames mus porta eu sociosqu interdum tincidunt dolor nibh nullam morbi fringilla. In torquent fermentum egestas. Habitasse ligula dictumst. Congue congue parturient senectus.Lectus praesent maecenas venenatis vestibulum fames mus porta eu sociosqu interdum tincidunt dolor nibh nullam morbi fringilla. In torquent fermentum egestas. Habitasse ligula dictumst. Congue congue parturient senectus.Lectus praesent maecenas venenatis vestibulum fames mus porta eu sociosqu interdum tincidunt dolor nibh nullam morbi fringilla.In torquent fermentum egestas. Habitasse ligula dictumst. Congue congue parturient senectus.Lectus praesent maecenas venenatis vestibulum fames mus porta eu sociosqu interdum tincidunt dolor nibh nullam morbi fringilla."
+      ;
 }
