@@ -67,9 +67,14 @@ class CartProductCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.delete_outline))
+                      SizedBox(
+                        height: 35,
+                        child: FittedBox(
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.delete_outline)),
+                        ),
+                      )
                     ],
                   ),
                   Row(
@@ -82,14 +87,19 @@ class CartProductCard extends StatelessWidget {
                             fontSize: 18,
                             fontWeight: FontWeight.w500),
                       ),
-                      CustomStepper(
-                          lowerLimit: 1,
-                          upperLimit: 10,
-                          stepValue: 1,
-                          value: 1,
-                          onChange: (int value) {
-                            return value;
-                          })
+                      SizedBox(
+                        height: 30,
+                        child: FittedBox(
+                          child: CustomStepper(
+                              lowerLimit: 1,
+                              upperLimit: 10,
+                              stepValue: 1,
+                              value: 1,
+                              onChange: (int value) {
+                                return value;
+                              }),
+                        ),
+                      )
                     ],
                   )
                 ],
