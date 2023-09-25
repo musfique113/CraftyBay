@@ -1,3 +1,5 @@
+import 'package:CraftyBay/presentation/ui/screens/create_review_screen.dart';
+import 'package:CraftyBay/presentation/ui/screens/display_review_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/custom_stepper.dart';
@@ -5,6 +7,7 @@ import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widg
 import 'package:CraftyBay/presentation/utilities/custom_widgets/product_color_picker_widget.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/product_size_picker_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key});
@@ -87,7 +90,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ],
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(const DisplayReviewScreen());
+                          },
                           child: const Text(
                             'REVIEW',
                             style: TextStyle(

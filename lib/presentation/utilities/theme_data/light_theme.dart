@@ -15,7 +15,7 @@ class AppLightTheme {
             fontFamily: 'Poppins',
             fontSize: 16,
             letterSpacing: 0.5,
-            fontWeight: FontWeight.w600),
+            fontWeight: FontWeight.w500),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -23,7 +23,7 @@ class AppLightTheme {
     ),
     inputDecorationTheme: const InputDecorationTheme(
       contentPadding: EdgeInsets.symmetric(horizontal: 16),
-      border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+      border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.primaryColor)),
       enabledBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
       disabledBorder:
