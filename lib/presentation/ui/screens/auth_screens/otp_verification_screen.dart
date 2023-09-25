@@ -10,6 +10,7 @@ import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPlVerificationScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class OTPlVerificationScreen extends StatefulWidget {
 class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _otpTEController =
-      TextEditingController(text: "1234");
+  TextEditingController(text: "1234");
 
   //TODO: set the countdown to 120
   int _countdown = 20; // Initial countdown time in seconds
@@ -47,7 +48,8 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => CompleteProfileScreen(
+                builder: (context) =>
+                    CompleteProfileScreen(
                       email: widget.email,
                       otp: _otpTEController.text,
                     )));
@@ -112,7 +114,8 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
                 ),
                 Text(
                   ConstString.enterOTP,
-                  style: Theme.of(context)
+                  style: Theme
+                      .of(context)
                       .textTheme
                       .headlineLarge
                       ?.copyWith(fontWeight: FontWeight.w500),
@@ -174,6 +177,8 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
                       ),
                       child: ElevatedButton(
                           onPressed: () {
+                            print("Email ${widget.email}");
+                            print("OTP $_otpTEController");
                             verifyOTP();
                           },
                           child: const Text("Next")),
@@ -219,22 +224,4 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
     _countdown = 20; // Reset the countdown to 120 seconds
     _startCountdown();
   }
-
-// void _submitForm() {
-//   if (_formKey.currentState!.validate()) {
-//     final otp = _otpTEController.text;
-//     print('OTP submitted: $otp');
-//     //Get.offAll(const CompleteProfileScreen());
-//     Get.to(const CompleteProfileScreen());
-//   }
-// }
-
-// void _submitForm() {
-//   if (_formKey.currentState!.validate()) {
-//     final otp = _otpTEController.text;
-//     print('OTP submitted: $otp');
-//     //Get.offAll(const CompleteProfileScreen());
-//     Get.to(const CompleteProfileScreen());
-//   }
-// }
 }

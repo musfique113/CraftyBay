@@ -7,6 +7,7 @@ import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({super.key});
@@ -129,12 +130,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     );
   }
 
-// void _submitForm() {
-//   if (_formKey.currentState!.validate()) {
-//     final email = _emailTEController.text;
-//     print('Email submitted: $email');
-//     Get.to(OTPlVerificationScreen());
-//     //Get.offAll(const OTPlVerificationScreen());
-//   }
-// }
+void _submitForm() {
+  if (_formKey.currentState!.validate()) {
+    final email = _emailTEController.text;
+    print('Email submitted: $email');
+    Get.to(OTPlVerificationScreen(email: _emailTEController.text,));
+    //Get.offAll(const OTPlVerificationScreen());
+  }
+}
 }

@@ -1,4 +1,5 @@
 import 'package:CraftyBay/data/models/auth_utility.dart';
+import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/bottom_nav_bar_screen.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
@@ -29,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
           MaterialPageRoute(
               builder: (context) => isLoggedIn
                   ? const BottomNavbarScreen()
-                  // : const EmailVerificationScreen()),
-                  : const BottomNavbarScreen()),
+                  : const EmailVerificationScreen()),
+                 // : const BottomNavbarScreen()),
           (route) => false,
         );
       }
