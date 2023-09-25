@@ -165,7 +165,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 8,
+                      height: 18,
                     ),
                     const Text(
                       "Size",
@@ -218,7 +218,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 8,
+                      height: 18,
                     ),
                     const Text(
                       "Description",
