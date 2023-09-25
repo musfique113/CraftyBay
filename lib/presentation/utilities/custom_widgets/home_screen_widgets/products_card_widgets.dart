@@ -8,6 +8,7 @@ class ProductsCard extends StatelessWidget {
   const ProductsCard({
     super.key,
   });
+
   @override
   Widget build(BuildContext context) {
     return InkWell(

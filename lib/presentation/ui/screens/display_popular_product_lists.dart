@@ -1,4 +1,3 @@
-import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widgets/products_card_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,10 +6,12 @@ class DisplayPopularProductListScreen extends StatefulWidget {
   const DisplayPopularProductListScreen({super.key});
 
   @override
-  State<DisplayPopularProductListScreen> createState() => _DisplayPopularProductListScreenState();
+  State<DisplayPopularProductListScreen> createState() =>
+      _DisplayPopularProductListScreenState();
 }
 
-class _DisplayPopularProductListScreenState extends State<DisplayPopularProductListScreen> {
+class _DisplayPopularProductListScreenState
+    extends State<DisplayPopularProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,15 +28,12 @@ class _DisplayPopularProductListScreenState extends State<DisplayPopularProductL
               Get.back();
             },
           ),
-
         ),
         body: Padding(
           padding: const EdgeInsets.all(1.0),
           child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 5
-              ),
+                  crossAxisCount: 3, mainAxisSpacing: 5),
               itemBuilder: (context, index) {
                 return const FittedBox(child: ProductsCard());
               }),

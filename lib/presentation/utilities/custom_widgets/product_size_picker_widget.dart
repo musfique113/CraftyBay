@@ -1,13 +1,12 @@
-
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductSizePicker extends StatefulWidget {
   const ProductSizePicker(
       {super.key,
-        required this.sizes,
-        required this.onSelected,
-        required this.initialSelected});
+      required this.sizes,
+      required this.onSelected,
+      required this.initialSelected});
 
   final List<String> sizes;
   final Function(int selectIndex) onSelected;

@@ -1,4 +1,3 @@
-
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/custom_stepper.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +10,9 @@ class CartProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8)
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       elevation: 2,
-      margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       child: Row(
         children: [
           Container(
@@ -34,76 +31,75 @@ class CartProductCard extends StatelessWidget {
           ),
           Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "New Bata Show fdsfjig sdiuwg",
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "New Bata Show fdsfjig sdiuwg",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              overflow: TextOverflow.fade),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        RichText(
+                          text: const TextSpan(
                               style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                  overflow: TextOverflow.fade),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            RichText(
-                              text: const TextSpan(
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black54),
-                                  children: [
-                                    TextSpan(text: "Color: Black"),
-                                    TextSpan(text: "Size: L"),
-                                  ]),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 35,
-                        child: FittedBox(
-                          child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.delete_outline)),
-                        ),
-                      )
-                    ],
+                                  fontSize: 12, color: Colors.black54),
+                              children: [
+                                TextSpan(text: "Color: Black"),
+                                TextSpan(text: "Size: L"),
+                              ]),
+                        )
+                      ],
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "\$100",
-                        style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        height: 30,
-                        child: FittedBox(
-                          child: CustomStepper(
-                              lowerLimit: 1,
-                              upperLimit: 10,
-                              stepValue: 1,
-                              value: 1,
-                              onChange: (int value) {
-                                return value;
-                              }),
-                        ),
-                      )
-                    ],
+                  SizedBox(
+                    height: 35,
+                    child: FittedBox(
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.delete_outline)),
+                    ),
                   )
                 ],
-              ))
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "\$100",
+                    style: TextStyle(
+                        color: AppColors.primaryColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: 30,
+                    child: FittedBox(
+                      child: CustomStepper(
+                          lowerLimit: 1,
+                          upperLimit: 10,
+                          stepValue: 1,
+                          value: 1,
+                          onChange: (int value) {
+                            return value;
+                          }),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ))
         ],
       ),
     );

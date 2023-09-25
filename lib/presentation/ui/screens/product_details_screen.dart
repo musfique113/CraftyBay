@@ -2,6 +2,7 @@ import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/custom_stepper.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/home_screen_widgets/carousel_slider_product_screen.dart';
+import 'package:CraftyBay/presentation/utilities/custom_widgets/product_color_picker_widget.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/product_size_picker_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +22,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     Colors.pink,
   ];
 
-  int _selectedColorIndex = 0;
-
   List<String> sizes = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
   int _selectedSizeIndex = 0;
+  int _selectedColorIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -119,33 +119,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                     SizedBox(
                       height: 25,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: colorsList.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            borderRadius: BorderRadius.circular(10),
-                            onTap: () {
-                              _selectedColorIndex = index;
-                              if (mounted) {
-                                setState(() {});
-                              }
-                            },
-                            child: CircleAvatar(
-                              backgroundColor: colorsList[index],
-                              child: _selectedColorIndex == index
-                                  ? const Icon(
-                                      Icons.done,
-                                      color: Colors.white,
-                                    )
-                                  : null,
-                            ),
-                          );
-                        },
-                        separatorBuilder: (BuildContext context, int index) {
-                          return const SizedBox(
-                            width: 4,
-                          );
+                      child: ProductColorPicker(
+                        initialSelected: 0,
+                        colorsList: colorsList,
+                        onSelected: (int selectCIndex) {
+                          _selectedColorIndex = selectCIndex;
                         },
                       ),
                     ),
@@ -246,67 +224,3 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
-
-// class ProductSizePicker extends StatefulWidget {
-//   const ProductSizePicker(
-//       {super.key,
-//       required this.sizes,
-//       required this.onSelected,
-//       required this.initialSelected});
-//
-//   final List<String> sizes;
-//   final Function(int selectedIndex) onSelected;
-//   final int initialSelected;
-//
-//   @override
-//   State<ProductSizePicker> createState() => _ProductSizePickerState();
-// }
-//
-// class _ProductSizePickerState extends State<ProductSizePicker> {
-//   int _selectedSizeIndex = 0;
-//
-//   @override
-//   void initState() {
-//     _selectedSizeIndex = widget.initialSelected;
-//     super.initState();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.separated(
-//       scrollDirection: Axis.horizontal,
-//       itemCount: widget.sizes.length,
-//       itemBuilder: (context, index) {
-//         return InkWell(
-//           borderRadius: BorderRadius.circular(10),
-//           onTap: () {
-//             _selectedSizeIndex = index;
-//             if (mounted) {
-//               setState(() {});
-//             }
-//           },
-//           child: Container(
-//             padding: const EdgeInsets.symmetric(horizontal: 8),
-//             decoration: BoxDecoration(
-//               color:
-//                   _selectedSizeIndex == index ? AppColors.primaryColor : null,
-//               borderRadius: BorderRadius.circular(7),
-//               border: Border.all(color: Colors.grey),
-//             ),
-//             alignment: Alignment.center,
-//             child: Text(
-//               widget.sizes[index],
-//               style: TextStyle(
-//                   color: _selectedSizeIndex == index ? Colors.white : null),
-//             ),
-//           ),
-//         );
-//       },
-//       separatorBuilder: (BuildContext context, int index) {
-//         return const SizedBox(
-//           width: 4,
-//         );
-//       },
-//     );
-//   }
-// }
