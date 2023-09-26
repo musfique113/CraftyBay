@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
-  EmailVerificationScreen({super.key});
+  const EmailVerificationScreen({Key? key}) : super(key: key);
 
   @override
   State<EmailVerificationScreen> createState() =>
@@ -25,6 +25,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   Future<void> verifyEmail(EmailVerificationController controller) async {
     final responseIsSuccess =
         await controller.verifyEmail(_emailTEController.text.trim());
+    print('Response is success: $responseIsSuccess');
     if (responseIsSuccess) {
       Get.to(
           () => OTPVerificationScreen(email: _emailTEController.text.trim()));

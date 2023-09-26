@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 class NetworkCaller {
-
   Future<NetworkResponse> getRequest(String url) async {
     try {
       Response response = await get(Uri.parse(url));
       log(response.statusCode.toString());
       log(response.body);
-      if (response.statusCode == 200 && jsonDecode(response.body)['status']=='success') {
+      if (response.statusCode == 200 &&
+          jsonDecode(response.body)['msg'] == 'success') {
         return NetworkResponse(
             true, response.statusCode, jsonDecode(response.body));
       } else if (response.statusCode == 401) {
@@ -29,7 +29,8 @@ class NetworkCaller {
     return NetworkResponse(false, -1, null);
   }
 
-  // Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,
+
+    // Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,
   //     {bool isLogin = false}) async {
   //   try {
   //     Response response = await post(
@@ -66,7 +67,7 @@ class NetworkCaller {
     Navigator.pushAndRemoveUntil(
         CraftyBay.globalKey.currentContext!,
         MaterialPageRoute(
-            builder: (context) =>  EmailVerificationScreen()),
+            builder: (context) =>  const EmailVerificationScreen()),
         (route) => false);
   }
 }

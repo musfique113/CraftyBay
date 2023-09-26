@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class EmailVerificationController extends GetxController {
   bool _emailVerificationInProgress = false;
-  String _message = "";
+  String _message = '';
 
   bool get emailVerificationInProgress => _emailVerificationInProgress;
 
@@ -17,10 +17,10 @@ class EmailVerificationController extends GetxController {
     final NetworkResponse response = await NetworkCaller().getRequest(Urls.sendOtpToEmail(email));
     _emailVerificationInProgress = false;
     update();
-    if(response.isSuccess){
+    if (response.isSuccess) {
       _message = response.body?['data'] ?? '';
       return true;
-    }else{
+    } else {
       return false;
     }
   }
