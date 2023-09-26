@@ -3,18 +3,19 @@ import 'dart:developer';
 
 import 'package:CraftyBay/application/app.dart';
 import 'package:CraftyBay/data/models/auth_utility.dart';
-import 'package:CraftyBay/data/models/network_response.dart';
+import 'package:CraftyBay/data/services/network_response.dart';
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 class NetworkCaller {
+
   Future<NetworkResponse> getRequest(String url) async {
     try {
       Response response = await get(Uri.parse(url));
       log(response.statusCode.toString());
       log(response.body);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 && jsonDecode(response.body)['status']=='success') {
         return NetworkResponse(
             true, response.statusCode, jsonDecode(response.body));
       } else if (response.statusCode == 401) {
@@ -65,7 +66,7 @@ class NetworkCaller {
     Navigator.pushAndRemoveUntil(
         CraftyBay.globalKey.currentContext!,
         MaterialPageRoute(
-            builder: (context) => const EmailVerificationScreen()),
+            builder: (context) =>  EmailVerificationScreen()),
         (route) => false);
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:CraftyBay/data/models/network_response.dart';
+import 'package:CraftyBay/data/services/network_response.dart';
 import 'package:CraftyBay/data/services/network_caller.dart';
 import 'package:CraftyBay/data/utils/urls.dart';
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/complete_profile_screen.dart';
@@ -10,19 +10,18 @@ import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class OTPlVerificationScreen extends StatefulWidget {
+class OTPVerificationScreen extends StatefulWidget {
   final String email;
 
-  const OTPlVerificationScreen({super.key, required this.email});
+  const OTPVerificationScreen({super.key, required this.email});
 
   @override
-  State<OTPlVerificationScreen> createState() => _OTPlVerificationScreenState();
+  State<OTPVerificationScreen> createState() => _OTPVerificationScreenState();
 }
 
-class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
+class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _otpTEController =
   TextEditingController(text: "1234");
@@ -218,8 +217,6 @@ class _OTPlVerificationScreenState extends State<OTPlVerificationScreen> {
   }
 
   void _resendCode() {
-    // Implement code to resend the authentication code here
-    // You can also start the countdown timer again here
     //TODO: set the countdown to 120
     _countdown = 20; // Reset the countdown to 120 seconds
     _startCountdown();

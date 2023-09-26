@@ -1,4 +1,5 @@
 class NetworkResponse {
+
   final int statusCode;
   final bool isSuccess;
   final Map<String, dynamic>? body;
@@ -9,3 +10,7 @@ class NetworkResponse {
     this.body,
   );
 }
+
+
+
+
