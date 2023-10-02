@@ -1,3 +1,4 @@
+import 'package:CraftyBay/presentation/state_holders/carousel_slider_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
 import 'package:CraftyBay/presentation/ui/screens/display_popular_product_lists.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
@@ -19,6 +20,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
