@@ -29,6 +29,7 @@ dependencies:
   shared_preferences: ^2.2.0
   http:
   carousel_slider: ^4.2.1
+  flutter_spinkit: ^5.2.0
 
 
 dev_dependencies:

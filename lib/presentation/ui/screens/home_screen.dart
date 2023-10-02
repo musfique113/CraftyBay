@@ -11,6 +11,8 @@ import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -76,8 +78,20 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               GetBuilder<CarouselSlidersController>(
                   builder: (homeSliderController) {
+                    if (homeSliderController.getCarouselSlidersInProgress) {
+                      return const SizedBox(
+                        height: 180.0,
+                        child: Center(
+                          child: SpinKitCircle(
+                            color: Colors.cyan,
+                            size: 50,
+                          ),
+                        ),
+                      );
+                    }
                     return CustomCarouselSlider(
-                      sliders: homeSliderController.carouselSliderDataModel.data ?? []);
+                      sliders: homeSliderController.carouselSliderDataModel.data ?? [],
+                    );
                   }
               ),
               SectionTitle(
