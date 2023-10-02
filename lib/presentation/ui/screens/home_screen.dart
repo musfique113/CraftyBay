@@ -22,7 +22,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,11 +70,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderSide: BorderSide.none,
                     ),
                     focusedBorder:
-                        const OutlineInputBorder(borderSide: BorderSide.none)),
+                    const OutlineInputBorder(borderSide: BorderSide.none)),
                 style: const TextStyle(
                     fontSize: 20, color: AppColors.primaryColor),
               ),
-              const CustomCarouselSlider(),
+              GetBuilder<CarouselSlidersController>(
+                  builder: (homeSliderController) {
+                    return CustomCarouselSlider(
+                      sliders: homeSliderController.carouselSliderDataModel.data ?? []);
+                  }
+              ),
               SectionTitle(
                   title: "Categories",
                   onTap: () {

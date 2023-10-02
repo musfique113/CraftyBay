@@ -11,6 +11,9 @@ class CarouselSlidersController extends GetxController {
 
   bool get getCarouselSlidersInProgress => _getCarouselSlidersInProgress;
 
+  CarouselSliderDataModel get carouselSliderDataModel => _carouselSliderDataModel;
+
+
   String get message => _message;
 
   Future<bool> getCarouselSliders() async {
@@ -21,7 +24,7 @@ class CarouselSlidersController extends GetxController {
     _getCarouselSlidersInProgress = false;
 
     if (response.isSuccess) {
-      _carouselSliderDataModel = CarouselSliderDataModel.fromJson(response.body?['data'] ?? []);
+      _carouselSliderDataModel = CarouselSliderDataModel.fromJson(response.body ?? {});
       update();
       return true;
     } else {

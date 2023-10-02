@@ -31,8 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
           MaterialPageRoute(
               builder: (context) => isLoggedIn
                   ? const BottomNavbarScreen()
-                  :  const EmailVerificationScreen()),
-          //      : const BottomNavbarScreen()),
+                 // :  const EmailVerificationScreen()),
+          : const BottomNavbarScreen()),
           (route) => false,
         );
       }
