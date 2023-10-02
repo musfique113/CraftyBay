@@ -19,7 +19,8 @@ class NetworkCaller {
         return NetworkResponse(
             true, response.statusCode, jsonDecode(response.body));
       } else if (response.statusCode == 401) {
-        gotoLogin();
+        log("Token expired");
+        //gotoLogin();
       } else {
         return NetworkResponse(false, response.statusCode, null);
       }
@@ -62,12 +63,12 @@ class NetworkCaller {
   //   return NetworkResponse(false, -1, null);
   // }
 
-  Future<void> gotoLogin() async {
-    await AuthUtility.clearUserInfo();
-    Navigator.pushAndRemoveUntil(
-        CraftyBay.globalKey.currentContext!,
-        MaterialPageRoute(
-            builder: (context) =>  const EmailVerificationScreen()),
-        (route) => false);
-  }
+  // Future<void> gotoLogin() async {
+  //   await AuthController.clearUserInfo();
+  //   Navigator.pushAndRemoveUntil(
+  //       CraftyBay.globalKey.currentContext!,
+  //       MaterialPageRoute(
+  //           builder: (context) =>  const EmailVerificationScreen()),
+  //       (route) => false);
+  // }
 }

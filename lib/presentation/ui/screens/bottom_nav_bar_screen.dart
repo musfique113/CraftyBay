@@ -1,3 +1,4 @@
+import 'package:CraftyBay/presentation/state_holders/carousel_slider_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
 import 'package:CraftyBay/presentation/ui/screens/cart_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/categories_list_screen.dart';
@@ -15,12 +16,24 @@ class BottomNavbarScreen extends StatefulWidget {
 }
 
 class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
+
   final List<Widget> _screens = [
     const HomeScreen(),
     const CategoriesScreen(),
     const CartScreen(),
     const WishScreen()
   ];
+
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.find<CarouselSlidersController>().getCarouselSliders();
+    });
+    super.initState();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

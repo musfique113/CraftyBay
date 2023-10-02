@@ -1,9 +1,11 @@
+import 'package:CraftyBay/data/models/carousel_slider_data_model.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
-  const CustomCarouselSlider({super.key});
+  final List<CarouselSliderData> sliders;
+  const CustomCarouselSlider({super.key, required this.sliders});
 
   @override
   State<CustomCarouselSlider> createState() => _CustomCarouselSliderState();
@@ -27,7 +29,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
               onPageChanged: (int page, _) {
                 _selectedSlider.value = page;
               }),
-          items: [1, 2, 3, 4, 5].map((i) {
+          items: widget.sliders.map((sliderData) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -37,10 +39,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                         color: Colors.amber,
                         borderRadius: BorderRadius.circular(10.0)),
                     alignment: Alignment.center,
-                    child: Text(
-                      'Image $i',
-                      style: const TextStyle(fontSize: 16.0),
-                    ));
+                    child: Image.network(sliderData.image ?? ""),);
               },
             );
           }).toList(),

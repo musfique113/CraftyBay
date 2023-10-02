@@ -1,3 +1,4 @@
+import 'package:CraftyBay/presentation/state_holders/carousel_slider_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
 import 'package:CraftyBay/presentation/ui/screens/display_popular_product_lists.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
@@ -19,6 +20,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,11 +70,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderSide: BorderSide.none,
                     ),
                     focusedBorder:
-                        const OutlineInputBorder(borderSide: BorderSide.none)),
+                    const OutlineInputBorder(borderSide: BorderSide.none)),
                 style: const TextStyle(
                     fontSize: 20, color: AppColors.primaryColor),
               ),
-              const CustomCarouselSlider(),
+              GetBuilder<CarouselSlidersController>(
+                  builder: (homeSliderController) {
+                    return CustomCarouselSlider(
+                      sliders: homeSliderController.carouselSliderDataModel.data ?? []);
+                  }
+              ),
               SectionTitle(
                   title: "Categories",
                   onTap: () {
