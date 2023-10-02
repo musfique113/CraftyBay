@@ -1,36 +1,24 @@
-import 'dart:convert';
-
-import 'package:CraftyBay/data/models/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthUtility {
-  AuthUtility._();
+class AuthController {
+  static String? _accessToken;
 
-  static LoginModel userInfo = LoginModel();
+  String? get accessToken => _accessToken;
 
-  static Future<void> saveUserInfo(LoginModel model) async {
-    SharedPreferences _sharedPrefs = await SharedPreferences.getInstance();
-    await _sharedPrefs.setString('data', jsonEncode(model.toJson()));
-    userInfo = model;
+  static Future<void> setAccessToken(String token) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    await sharedPreferences.setString('access_token', token);
+    _accessToken = token;
   }
 
-  static Future<LoginModel> getUserInfo() async {
-    SharedPreferences _sharedPrefs = await SharedPreferences.getInstance();
-    String value = _sharedPrefs.getString('data')!;
-    return LoginModel.fromJson(jsonDecode(value));
+  static Future<void> getAccessToken() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    _accessToken = sharedPreferences.getString('access_token');
   }
 
-  static Future<void> clearUserInfo() async {
-    SharedPreferences _sharedPrefs = await SharedPreferences.getInstance();
-    await _sharedPrefs.clear();
-  }
-
-  static Future<bool> checkIfUserLoggedIn() async {
-    SharedPreferences _sharedPrefs = await SharedPreferences.getInstance();
-    bool isLogin = _sharedPrefs.containsKey('data');
-    if (isLogin) {
-      userInfo = await getUserInfo();
-    }
-    return isLogin;
+  static bool get isLoggedIn {
+    return _accessToken != null;
   }
 }

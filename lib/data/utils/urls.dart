@@ -5,7 +5,7 @@ class Urls {
 
   static String sendOtpToEmail(String email) => '$_baseUrl/UserLogin/$email';
 
-  static String otpVerify(String email, String otp) =>
+  static String verifyOtp(String email, String otp) =>
       '$_baseUrl/VerifyLogin/$email/$otp';
 
   static String getCarouselSliders = "$_baseUrl/ListProductSlider";

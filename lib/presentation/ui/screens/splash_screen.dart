@@ -5,6 +5,7 @@ import 'package:CraftyBay/presentation/utilities/const_string.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,22 +22,33 @@ class _SplashScreenState extends State<SplashScreen> {
     goToNextScreen();
   }
 
-  void goToNextScreen() {
-    Future.delayed(const Duration(seconds: 2)).then((value) async {
-      final bool isLoggedIn = await AuthUtility.checkIfUserLoggedIn();
-      print(isLoggedIn);
-      if (mounted) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-              builder: (context) => isLoggedIn
-                  ? const BottomNavbarScreen()
-                 // :  const EmailVerificationScreen()),
-          : const BottomNavbarScreen()),
-          (route) => false,
-        );
-      }
-      //Get.offAll(const EmailVerificationScreen());
+  // void goToNextScreen() {
+  //   Future.delayed(const Duration(seconds: 2)).then((value) async {
+  //     final bool isLoggedIn = await AuthUtility.checkIfUserLoggedIn();
+  //     print(isLoggedIn);
+  //     if (mounted) {
+  //       Navigator.pushAndRemoveUntil(
+  //         context,
+  //         MaterialPageRoute(
+  //             builder: (context) => isLoggedIn
+  //                 ? const BottomNavbarScreen()
+  //                // :  const EmailVerificationScreen()),
+  //         : const BottomNavbarScreen()),
+  //         (route) => false,
+  //       );
+  //     }
+  //     //Get.offAll(const EmailVerificationScreen());
+  //   });
+  // }
+
+
+  Future<void> goToNextScreen() async {
+    await AuthController.getAccessToken();
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      Get.offAll(() => AuthController.isLoggedIn
+          ? const BottomNavbarScreen()
+          : const EmailVerificationScreen(),
+      );
     });
   }
 
