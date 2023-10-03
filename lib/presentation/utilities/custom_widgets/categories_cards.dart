@@ -1,33 +1,33 @@
+import 'package:CraftyBay/data/models/category_list_model.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesCards extends StatelessWidget {
-  const CategoriesCards({
-    super.key,
+  CategoriesCards({
+    super.key, required this.categoryListModelData,
   });
+
+  final CategoryListModelData categoryListModelData ;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
+          height: 70,
           margin: const EdgeInsets.symmetric(horizontal: 9),
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(9),
           decoration: BoxDecoration(
               color: AppColors.primaryColor.withOpacity(0.1),
               borderRadius: BorderRadius.circular(10)),
-          child: const Icon(
-            Icons.account_box,
-            size: 40,
-            color: AppColors.primaryColor,
-          ),
+          child: Image.network(categoryListModelData.categoryImg ?? " "),
         ),
         const SizedBox(
           height: 5,
         ),
-        const Text(
-          "Electronics",
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+        Text(
+          categoryListModelData.categoryName ?? "",
+          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
         )
       ],
     );

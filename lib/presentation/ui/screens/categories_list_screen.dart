@@ -1,3 +1,4 @@
+import 'package:CraftyBay/presentation/state_holders/category_list_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/categories_cards.dart';
 import 'package:flutter/material.dart';
@@ -37,13 +38,18 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               )),
           body: Padding(
             padding: const EdgeInsets.all(4.0),
-            child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                ),
-                itemBuilder: (context, index) {
-                  return const CategoriesCards();
-                }),
+            child: GetBuilder<CategoryListController>(
+              builder: (categoryController) {
+                return GridView.builder(
+                  itemCount: categoryController.categoryListModel.data?.length ?? 0,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                    ),
+                    itemBuilder: (context, index) {
+                      return FittedBox(child: CategoriesCards(categoryListModelData: categoryController.categoryListModel.data![index],));
+                    });
+              }
+            ),
           )),
     );
   }
