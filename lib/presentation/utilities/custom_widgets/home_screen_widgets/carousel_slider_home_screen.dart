@@ -43,14 +43,20 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                   child: Stack(children: [
                     Image.network(sliderData.image ?? ''),
                     Positioned(
-                       bottom: 0,
+                        bottom: 0,
                         child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(sliderData.title ?? "",style: TextStyle(fontSize: 18,color: Colors.white70,fontWeight: FontWeight.w800),),
-                      ],
-                    ))
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              sliderData.title ?? "",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.w800),
+                            ),
+                          ],
+                        ))
                   ]),
                 );
               },

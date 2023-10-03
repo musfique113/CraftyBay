@@ -101,7 +101,8 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                           builder: (controller) {
                         if (controller.emailVerificationInProgress) {
                           return const Center(
-                              child: CircularProgressIndicator(),);
+                            child: CircularProgressIndicator(),
+                          );
                         }
                         return ElevatedButton(
                             onPressed: () async {

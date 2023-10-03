@@ -11,8 +11,8 @@ class CarouselSlidersController extends GetxController {
 
   bool get getCarouselSlidersInProgress => _getCarouselSlidersInProgress;
 
-  CarouselSliderDataModel get carouselSliderDataModel => _carouselSliderDataModel;
-
+  CarouselSliderDataModel get carouselSliderDataModel =>
+      _carouselSliderDataModel;
 
   String get message => _message;
 
@@ -24,7 +24,8 @@ class CarouselSlidersController extends GetxController {
     _getCarouselSlidersInProgress = false;
 
     if (response.isSuccess) {
-      _carouselSliderDataModel = CarouselSliderDataModel.fromJson(response.body ?? {});
+      _carouselSliderDataModel =
+          CarouselSliderDataModel.fromJson(response.body ?? {});
       update();
       return true;
     } else {

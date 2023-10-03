@@ -16,14 +16,12 @@ class BottomNavbarScreen extends StatefulWidget {
 }
 
 class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
-
   final List<Widget> _screens = [
     const HomeScreen(),
     const CategoriesScreen(),
     const CartScreen(),
     const WishScreen()
   ];
-
 
   @override
   void initState() {
@@ -32,8 +30,6 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
     });
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {

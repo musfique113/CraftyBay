@@ -13,7 +13,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -22,8 +21,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,28 +69,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderSide: BorderSide.none,
                     ),
                     focusedBorder:
-                    const OutlineInputBorder(borderSide: BorderSide.none)),
+                        const OutlineInputBorder(borderSide: BorderSide.none)),
                 style: const TextStyle(
                     fontSize: 20, color: AppColors.primaryColor),
               ),
               GetBuilder<CarouselSlidersController>(
                   builder: (homeSliderController) {
-                    if (homeSliderController.getCarouselSlidersInProgress) {
-                      return const SizedBox(
-                        height: 180.0,
-                        child: Center(
-                          child: SpinKitCircle(
-                            color: Colors.cyan,
-                            size: 50,
-                          ),
-                        ),
-                      );
-                    }
-                    return CustomCarouselSlider(
-                      sliders: homeSliderController.carouselSliderDataModel.data ?? [],
-                    );
-                  }
-              ),
+                if (homeSliderController.getCarouselSlidersInProgress) {
+                  return const SizedBox(
+                    height: 180.0,
+                    child: Center(
+                      child: SpinKitCircle(
+                        color: Colors.cyan,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                }
+                return CustomCarouselSlider(
+                  sliders:
+                      homeSliderController.carouselSliderDataModel.data ?? [],
+                );
+              }),
               SectionTitle(
                   title: "Categories",
                   onTap: () {

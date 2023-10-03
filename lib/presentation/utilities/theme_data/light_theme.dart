@@ -23,7 +23,8 @@ class AppLightTheme {
     ),
     inputDecorationTheme: const InputDecorationTheme(
       contentPadding: EdgeInsets.symmetric(horizontal: 16),
-      border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.primaryColor)),
+      border: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor)),
       enabledBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
       disabledBorder:

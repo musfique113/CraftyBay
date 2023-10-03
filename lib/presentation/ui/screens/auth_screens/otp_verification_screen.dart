@@ -1,10 +1,7 @@
 import 'dart:async';
 
-import 'package:CraftyBay/data/services/network_response.dart';
-import 'package:CraftyBay/data/services/network_caller.dart';
-import 'package:CraftyBay/data/utils/urls.dart';
+import 'package:CraftyBay/presentation/state_holders/email_verification_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/otp_verification_controller.dart';
-import 'package:CraftyBay/presentation/ui/screens/auth_screens/complete_profile_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/bottom_nav_bar_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
@@ -13,7 +10,6 @@ import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPVerificationScreen extends StatefulWidget {
@@ -28,16 +24,16 @@ class OTPVerificationScreen extends StatefulWidget {
 class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _otpTEController =
-  TextEditingController(text: "1234");
+      TextEditingController(text: "1234");
 
   //TODO: set the countdown to 120
-  int _countdown = 20; // Initial countdown time in seconds
+  int _countdown = 120;
   late Timer _timer;
   bool _otpVerificationInProgress = false;
 
   Future<void> verifyOtp(OtpVerificationController controller) async {
     final response =
-    await controller.verifyOtp(widget.email, _otpTEController.text.trim());
+        await controller.verifyOtp(widget.email, _otpTEController.text.trim());
     if (response) {
       Get.offAll(() => const BottomNavbarScreen());
     } else {
@@ -54,26 +50,21 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
   @override
   void initState() {
     super.initState();
-
-    // Start the countdown timer when the screen is first loaded
     _startCountdown();
   }
 
   @override
   void dispose() {
-    // Dispose of the timer when the screen is disposed to prevent memory leaks
     _timer.cancel();
     super.dispose();
   }
 
   void _startCountdown() {
-    // Create a timer that fires every 1 second
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (_countdown > 0) {
-          _countdown--; // Decrease the countdown by 1 second
+          _countdown--;
         } else {
-          // Disable the button and stop the timer when the countdown reaches 0
           timer.cancel();
         }
       });
@@ -103,8 +94,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 ),
                 Text(
                   ConstString.enterOTP,
-                  style: Theme
-                      .of(context)
+                  style: Theme.of(context)
                       .textTheme
                       .headlineLarge
                       ?.copyWith(fontWeight: FontWeight.w500),
@@ -157,25 +147,23 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                GetBuilder<OtpVerificationController>(
-                  builder: (controller) {
-                    return SizedBox(
-                        width: double.infinity,
-                        child: Visibility(
-                          visible: _otpVerificationInProgress == false,
-                          replacement: const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                print("Email ${widget.email}");
-                                print("OTP $_otpTEController");
-                                verifyOtp(controller);
-                              },
-                              child: const Text("Next")),
-                        ));
-                  }
-                ),
+                GetBuilder<OtpVerificationController>(builder: (controller) {
+                  return SizedBox(
+                      width: double.infinity,
+                      child: Visibility(
+                        visible: _otpVerificationInProgress == false,
+                        replacement: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              print("Email ${widget.email}");
+                              print("OTP $_otpTEController");
+                              verifyOtp(controller);
+                            },
+                            child: const Text("Next")),
+                      ));
+                }),
                 const SizedBox(
                   height: 24,
                 ),
@@ -210,9 +198,22 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
     );
   }
 
-  void _resendCode() {
-    //TODO: set the countdown to 120
-    _countdown = 20; // Reset the countdown to 120 seconds
-    _startCountdown();
+  Future<void> _resendCode() async {
+    EmailVerificationController emailController = EmailVerificationController();
+    bool verificationSuccess = await emailController.verifyEmail(widget.email);
+
+    // Check if the verification was successful
+    if (verificationSuccess) {
+      // Reset the countdown to 120 seconds
+      _countdown = 120;
+      _startCountdown();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed to resend verification code. Try again.'),
+        ),
+      );
+    }
   }
+
 }

@@ -5,5 +5,3 @@ class NetworkResponse {
 
   NetworkResponse(this.isSuccess, this.statusCode, this.body);
 }
-
-

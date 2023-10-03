@@ -1,4 +1,3 @@
-import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/form_validator.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +44,8 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                           TextFormField(
                             validator: FormValidator.validateName,
                             controller: _firstNameTEController,
-                            decoration: const InputDecoration(hintText: "First Name"),
+                            decoration:
+                                const InputDecoration(hintText: "First Name"),
                           ),
                           const SizedBox(
                             height: 12,
@@ -53,7 +53,8 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                           TextFormField(
                             validator: FormValidator.validateName,
                             controller: _lastNameTEController,
-                            decoration: const InputDecoration(hintText: "Last Name"),
+                            decoration:
+                                const InputDecoration(hintText: "Last Name"),
                           ),
                           const SizedBox(
                             height: 12,
@@ -64,7 +65,8 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                             maxLines: 10,
                             decoration: const InputDecoration(
                               hintText: "Write Review",
-                              contentPadding: EdgeInsets.fromLTRB(10, 12, 12, 20),
+                              contentPadding:
+                                  EdgeInsets.fromLTRB(10, 12, 12, 20),
                             ),
                           ),
                           const SizedBox(
@@ -74,8 +76,8 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                             width: double.infinity,
                             child: Visibility(
                               visible: _reviewInProgress == false,
-                              replacement:
-                                  const Center(child: CircularProgressIndicator()),
+                              replacement: const Center(
+                                  child: CircularProgressIndicator()),
                               child: ElevatedButton(
                                 onPressed: () {
                                   _printDataFromField();
@@ -92,8 +94,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 
   void _printDataFromField() {
