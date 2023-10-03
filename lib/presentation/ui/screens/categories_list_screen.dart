@@ -2,6 +2,7 @@ import 'package:CraftyBay/presentation/state_holders/category_list_controller.da
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/categories_cards.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -36,19 +37,35 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   color: Colors.black,
                 ),
               )),
-          body: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: GetBuilder<CategoryListController>(
-              builder: (categoryController) {
-                return GridView.builder(
-                  itemCount: categoryController.categoryListModel.data?.length ?? 0,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                    ),
-                    itemBuilder: (context, index) {
-                      return FittedBox(child: CategoriesCards(categoryListModelData: categoryController.categoryListModel.data![index],));
-                    });
-              }
+          body: RefreshIndicator(
+            onRefresh: ()async {
+              Get.find<CategoryListController>().getCategoryList();
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: GetBuilder<CategoryListController>(
+                builder: (categoryController) {
+                  if (categoryController.getCategoryListInProgress) {
+                    return const SizedBox(
+                      height: 90,
+                      child: Center(
+                        child: SpinKitCircle(
+                          color: Colors.cyan,
+                          size: 50,
+                        ),
+                      ),
+                    );
+                  }
+                  return GridView.builder(
+                    itemCount: categoryController.categoryListModel.data?.length ?? 0,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                      ),
+                      itemBuilder: (context, index) {
+                        return FittedBox(child: CategoriesCards(categoryListModelData: categoryController.categoryListModel.data![index],));
+                      });
+                }
+              ),
             ),
           )),
     );
