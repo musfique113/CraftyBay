@@ -1,4 +1,3 @@
-import 'package:CraftyBay/presentation/ui/screens/create_review_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/display_review_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';

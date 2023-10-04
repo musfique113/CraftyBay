@@ -1,4 +1,5 @@
 import 'package:CraftyBay/presentation/state_holders/carousel_slider_controller.dart';
+import 'package:CraftyBay/presentation/state_holders/category_list_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
 import 'package:CraftyBay/presentation/ui/screens/display_popular_product_lists.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
@@ -11,6 +12,7 @@ import 'package:CraftyBay/presentation/utilities/resources_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,8 +22,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,16 +70,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderSide: BorderSide.none,
                     ),
                     focusedBorder:
-                    const OutlineInputBorder(borderSide: BorderSide.none)),
+                        const OutlineInputBorder(borderSide: BorderSide.none)),
                 style: const TextStyle(
                     fontSize: 20, color: AppColors.primaryColor),
               ),
               GetBuilder<CarouselSlidersController>(
                   builder: (homeSliderController) {
-                    return CustomCarouselSlider(
-                      sliders: homeSliderController.carouselSliderDataModel.data ?? []);
-                  }
-              ),
+                if (homeSliderController.getCarouselSlidersInProgress) {
+                  return const SizedBox(
+                    height: 180.0,
+                    child: Center(
+                      child: SpinKitCircle(
+                        color: Colors.cyan,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                }
+                return CustomCarouselSlider(
+                  sliders:
+                      homeSliderController.carouselSliderDataModel.data ?? [],
+                );
+              }),
               SectionTitle(
                   title: "Categories",
                   onTap: () {
@@ -87,12 +99,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   }),
               SizedBox(
                 height: 110,
-                child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return const CategoriesCards();
-                  },
+                child: GetBuilder<CategoryListController>(
+                  builder: (categoryController) {
+                    if (categoryController.getCategoryListInProgress) {
+                      return const SizedBox(
+                        height: 90,
+                        child: Center(
+                          child: SpinKitCircle(
+                            color: Colors.cyan,
+                            size: 50,
+                          ),
+                        ),
+                      );
+                    }
+                    return ListView.builder(
+                      itemCount: categoryController.categoryListModel.data?.length ?? 0,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return CategoriesCards(categoryListModelData: categoryController.categoryListModel.data![index],);
+                      },
+                    );
+                  }
                 ),
               ),
               SectionTitle(

@@ -35,12 +35,12 @@ class CarouselSliderData {
 
   CarouselSliderData(
       {this.id,
-        this.title,
-        this.shortDes,
-        this.image,
-        this.productId,
-        this.createdAt,
-        this.updatedAt});
+      this.title,
+      this.shortDes,
+      this.image,
+      this.productId,
+      this.createdAt,
+      this.updatedAt});
 
   CarouselSliderData.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
   final List<CarouselSliderData> sliders;
+
   const CustomCarouselSlider({super.key, required this.sliders});
 
   @override
@@ -33,13 +34,31 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(10.0)),
-                    alignment: Alignment.center,
-                    child: Image.network(sliderData.image ?? ""),);
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                      color: AppColors.primaryColor.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(10.0)),
+                  alignment: Alignment.center,
+                  child: Stack(children: [
+                    Image.network(sliderData.image ?? ''),
+                    Positioned(
+                        bottom: 0,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              sliderData.title ?? "",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.w800),
+                            ),
+                          ],
+                        ))
+                  ]),
+                );
               },
             );
           }).toList(),

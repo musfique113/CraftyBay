@@ -31,13 +31,13 @@ class _DisplayReviewScreenState extends State<DisplayReviewScreen> {
             children: [
               Expanded(
                 child: ListView.builder(
-              itemCount: 20,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: ProductReviewListTile(),
-                );
-              }),
+                    itemCount: 20,
+                    itemBuilder: (context, index) {
+                      return const Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child: ProductReviewListTile(),
+                      );
+                    }),
               ),
               Container(
                 padding:
@@ -53,7 +53,13 @@ class _DisplayReviewScreenState extends State<DisplayReviewScreen> {
                     const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Reviews (1000)",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500,color: Colors.black54),),
+                        Text(
+                          "Reviews (1000)",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54),
+                        ),
                       ],
                     ),
                     FloatingActionButton(
