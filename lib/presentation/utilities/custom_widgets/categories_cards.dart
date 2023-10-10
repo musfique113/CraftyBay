@@ -1,4 +1,5 @@
 import 'package:CraftyBay/data/models/category_list_model.dart';
+import 'package:CraftyBay/data/models/models_data/category_list_model_data.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:flutter/material.dart';
 

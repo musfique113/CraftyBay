@@ -35,7 +35,9 @@ class _DisplayPopularProductListScreenState
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, mainAxisSpacing: 5),
               itemBuilder: (context, index) {
-                return const FittedBox(child: ProductsCard());
+                return const FittedBox(
+                    // child: ProductsCard()
+                );
               }),
         ));
   }

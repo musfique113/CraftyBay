@@ -1,4 +1,5 @@
 import 'package:CraftyBay/data/models/carousel_slider_data_model.dart';
+import 'package:CraftyBay/data/models/models_data/carousel_slider_data.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                           children: [
                             Text(
                               sliderData.title ?? "",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white70,
                                   fontWeight: FontWeight.w800),

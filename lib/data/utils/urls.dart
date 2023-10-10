@@ -10,6 +10,10 @@ class Urls {
 
   static String getCarouselSliders = "$_baseUrl/ListProductSlider";
 
-
   static String getCategories = '$_baseUrl/CategoryList';
+
+
+
+  static String getProductsByRemarks(String remarks) =>
+      '$_baseUrl/ListProductByRemark/$remarks';
 }

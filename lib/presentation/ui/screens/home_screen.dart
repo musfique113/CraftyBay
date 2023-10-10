@@ -1,6 +1,9 @@
+import 'package:CraftyBay/data/models/auth_utility.dart';
 import 'package:CraftyBay/presentation/state_holders/carousel_slider_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/category_list_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
+import 'package:CraftyBay/presentation/state_holders/popular_products_controller.dart';
+import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/display_popular_product_lists.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/custom_widgets/categories_cards.dart';
@@ -52,6 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 print("button alert pressed");
               },
             ),
+            const SizedBox(width: 10),
+            CircularIconButton(
+              iconData: Icons.logout,
+              onTap: () {
+                gotoLogin();
+                print("log out");
+              },
+            ),
           ],
         ),
       ),
@@ -74,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: const TextStyle(
                     fontSize: 20, color: AppColors.primaryColor),
               ),
+
               GetBuilder<CarouselSlidersController>(
                   builder: (homeSliderController) {
                 if (homeSliderController.getCarouselSlidersInProgress) {
@@ -127,14 +139,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Get.to(const DisplayPopularProductListScreen());
                   }),
-              SizedBox(
-                height: 165,
-                child: ListView.builder(
-                    itemCount: 20,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return const ProductsCard();
-                    }),
+              GetBuilder<PopularProductController>(
+                builder: (popularProductController) {
+                  return SizedBox(
+                    height: 165,
+                    child: ListView.builder(
+                        itemCount: popularProductController.popularProductModel.data?.length ?? 0,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return  ProductsCard(product: popularProductController.popularProductModel.data![index],);
+                        }),
+                  );
+                }
               ),
               SectionTitle(
                   title: "Special",
@@ -147,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: 20,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return const ProductsCard();
+                    //  return const ProductsCard();
                     }),
               ),
               SectionTitle(
@@ -161,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: 20,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return const ProductsCard();
+                    //  return ProductsCard(product: null,);
                     }),
               ),
             ],
@@ -170,4 +186,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+Future<void> gotoLogin() async {
+  await AuthController.clearUserInfo();
+  Get.to(const EmailVerificationScreen());
 }

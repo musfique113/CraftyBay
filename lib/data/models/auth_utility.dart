@@ -7,18 +7,23 @@ class AuthController {
 
   static Future<void> setAccessToken(String token) async {
     final SharedPreferences sharedPreferences =
-    await SharedPreferences.getInstance();
+        await SharedPreferences.getInstance();
     await sharedPreferences.setString('access_token', token);
     _accessToken = token;
   }
 
   static Future<void> getAccessToken() async {
     final SharedPreferences sharedPreferences =
-    await SharedPreferences.getInstance();
+        await SharedPreferences.getInstance();
     _accessToken = sharedPreferences.getString('access_token');
   }
 
   static bool get isLoggedIn {
     return _accessToken != null;
+  }
+
+  static Future<void> clearUserInfo() async {
+    SharedPreferences _sharedPrefs = await SharedPreferences.getInstance();
+    await _sharedPrefs.clear();
   }
 }

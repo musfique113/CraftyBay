@@ -1,6 +1,7 @@
 import 'package:CraftyBay/presentation/state_holders/carousel_slider_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/category_list_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
+import 'package:CraftyBay/presentation/state_holders/popular_products_controller.dart';
 import 'package:CraftyBay/presentation/ui/screens/cart_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/categories_list_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/home_screen.dart';
@@ -29,6 +30,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.find<CarouselSlidersController>().getCarouselSliders();
       Get.find<CategoryListController>().getCategoryList();
+      Get.find<PopularProductController>().getPopularProducts();
     });
     super.initState();
   }

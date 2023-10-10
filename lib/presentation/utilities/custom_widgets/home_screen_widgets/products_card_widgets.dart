@@ -1,3 +1,4 @@
+import 'package:CraftyBay/data/models/models_data/products_model_data.dart';
 import 'package:CraftyBay/presentation/ui/screens/product_details_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/resources_path.dart';
@@ -6,8 +7,10 @@ import 'package:get/get.dart';
 
 class ProductsCard extends StatelessWidget {
   const ProductsCard({
-    super.key,
+    super.key, required this.product,
   });
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -32,46 +35,48 @@ class ProductsCard extends StatelessWidget {
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8),
                     ),
-                    image: const DecorationImage(
-                        image: AssetImage(ImageAssets.nikeShoePNG))),
+                    image: DecorationImage(
+                        image: NetworkImage(product.image ?? ""))),
               ),
-              const Padding(
-                padding: EdgeInsets.all(5.0),
+             Padding(
+                padding: const EdgeInsets.all(5.0),
                 child: Column(
                   children: [
                     Text(
-                      'Nike shoe AK50459049',
+                      product?.title ?? "",
                       maxLines: 1,
-                      style: TextStyle(
+                      style: const TextStyle(
                           overflow: TextOverflow.ellipsis,
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: Colors.blueGrey),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 2,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\$90',
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w500),
+                          "\$${product.price}",
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
+
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star,
                               size: 15,
                               color: Colors.amber,
                             ),
                             Text(
-                              '4.5',
-                              style: TextStyle(
+                              "${product.star.toString()}",
+                              style: const TextStyle(
                                   overflow: TextOverflow.ellipsis,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -79,7 +84,7 @@ class ProductsCard extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Card(
+                        const Card(
                           color: AppColors.primaryColor,
                           child: Padding(
                             padding: EdgeInsets.all(2.0),
