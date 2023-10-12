@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:CraftyBay/presentation/state_holders/email_verification_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/otp_verification_controller.dart';
+import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/bottom_nav_bar_screen.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
 import 'package:CraftyBay/presentation/utilities/const_string.dart';
@@ -107,11 +108,18 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   style: TextStyle(color: Colors.grey, fontSize: 18),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 14,
                 ),
+                Text(
+                  widget.email,
+                  style: const TextStyle(color: Colors.black87, fontSize: 15),
+                ),
+
                 const SizedBox(
-                  height: 24,
+                  height: 20,
                 ),
+
+
                 Form(
                   key: _formKey,
                   child: PinCodeTextField(
@@ -187,7 +195,18 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                   style: TextButton.styleFrom(foregroundColor: Colors.grey),
                   child: Text(
                     _countdown > 0 ? ' ' : 'Resend Code',
-                    style: const TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16,color: AppColors.primaryColor),
+                  ),
+                ),
+
+                TextButton(
+                  onPressed: (){
+                    Get.off(EmailVerificationScreen());
+                  },
+                  // style: TextButton.styleFrom(foregroundColor: Colors.grey),
+                  child: Text(
+                    'Edit email',
+                    style: const TextStyle(fontSize: 16,color: AppColors.primaryColor),
                   ),
                 ),
               ],

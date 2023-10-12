@@ -3,7 +3,7 @@ class ConstString {
   static const String welcomeBack = 'Welcome back';
   static const String enterYourEmail = 'Please enter your email address';
   static const String enterOTP = 'Enter OTP Code';
-  static const String otpSent = 'A 4 Digit OTP Code has been sent';
+  static const String otpSent = 'A 4 Digit OTP Code has been sent to';
   static const String completeProfile = 'Complete Profile';
   static const String getStarted = 'Get started with us by fill-up you details';
   static const String dummyText =

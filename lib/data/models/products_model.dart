@@ -1,6 +1,6 @@
 
 import 'package:CraftyBay/data/models/models_data/products_model_data.dart';
-
+// Model class for Popular product , New product, special product
 class ProductModel {
   String? msg;
   List<Product>? data;
