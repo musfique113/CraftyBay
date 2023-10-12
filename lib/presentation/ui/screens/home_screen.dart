@@ -2,7 +2,9 @@ import 'package:CraftyBay/data/models/auth_utility.dart';
 import 'package:CraftyBay/presentation/state_holders/carousel_slider_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/category_list_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/main_bottom_nav_controller.dart';
+import 'package:CraftyBay/presentation/state_holders/new_products_controller.dart';
 import 'package:CraftyBay/presentation/state_holders/popular_products_controller.dart';
+import 'package:CraftyBay/presentation/state_holders/special_products_controller.dart';
 import 'package:CraftyBay/presentation/ui/screens/auth_screens/email_verification_screen.dart';
 import 'package:CraftyBay/presentation/ui/screens/display_popular_product_lists.dart';
 import 'package:CraftyBay/presentation/utilities/app_colors.dart';
@@ -159,12 +161,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   }),
               SizedBox(
                 height: 165,
-                child: ListView.builder(
-                    itemCount: 20,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                    //  return const ProductsCard();
-                    }),
+                child: GetBuilder<SpecialProductController>(
+                    builder: (specialCategoryController) {
+                      if (specialCategoryController.getSpecialProductsInProgress) {
+                        return const SizedBox(
+                          height: 90,
+                          child: Center(
+                            child: SpinKitCircle(
+                              color: Colors.cyan,
+                              size: 50,
+                            ),
+                          ),
+                        );
+                      }
+
+
+                      return ListView.builder(
+                        itemCount: specialCategoryController.specialProductModel.data?.length ?? 0,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return ProductsCard(product: specialCategoryController.specialProductModel.data![index]);
+
+                        },
+
+                      );
+
+
+
+                    }
+                ),
               ),
               SectionTitle(
                   title: "New",
@@ -173,12 +198,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   }),
               SizedBox(
                 height: 165,
-                child: ListView.builder(
-                    itemCount: 20,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                    //  return ProductsCard(product: null,);
-                    }),
+                child: GetBuilder<NewProductController>(
+                    builder: (newCategoryController) {
+                      if (newCategoryController.getNewProductsInProgress) {
+                        return const SizedBox(
+                          height: 90,
+                          child: Center(
+                            child: SpinKitCircle(
+                              color: Colors.cyan,
+                              size: 50,
+                            ),
+                          ),
+                        );
+                      }
+
+
+                      return ListView.builder(
+                        itemCount: newCategoryController.newProductModel.data?.length ?? 0,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return ProductsCard(product: newCategoryController.newProductModel.data![index]);
+
+                        },
+
+                      );
+
+
+
+                    }
+                ),
               ),
             ],
           ),
